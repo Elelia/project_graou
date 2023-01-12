@@ -2,13 +2,14 @@
 
 class Villageois extends Personnage
 {
-    public function __construct($id,$carte_id,$name_pers,$life,$status, $partie)
+ 
+    public function __construct($id,$carte_id,$name_pers,$life,$status, $vote, $partie)
     {
-        parent::__construct($id,$carte_id,$name_pers,$life,$status, 0, $partie);
+        parent::__construct($id,$carte_id,$name_pers,$life,$status, $vote, $partie);
     }
 
        // un villageois n'a pas d'action de nuit 
-    public function ActionNuit(){
+    public function actionNuit(){
         return null;
     }
 }

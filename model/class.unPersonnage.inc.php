@@ -59,6 +59,7 @@ class unPersonnage
         return $resultat;
     }
 
+
 }
 
 ?>

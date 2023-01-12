@@ -1,6 +1,4 @@
 <?php
-
-
 class Personnage 
 {
     private $id;
@@ -72,7 +70,6 @@ class Personnage
         $this->status=$status;
     }
 
-
     public static function getListPersoAlive($objectPersonnage)
     {
       $listPerso = $objectPersonnage;
@@ -132,5 +129,5 @@ class Personnage
           $personnage->set_vote($nbVote+1);
         }
       }
-    }  
+    }
 }

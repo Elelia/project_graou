@@ -7,13 +7,12 @@ class Partie
     private $listPerso;
     public function __construct()
     {
+      $this->chMortNuit = new ArrayObject();
     }
 
     public function startGame()
     {
-      echo '55';
       $this->nuit();
-      echo '55';
     }
 
     public function nuit()
@@ -45,11 +44,16 @@ class Partie
   }
 
 
-  public function getGentil(){
+  public function getGentils(){
     $gentils = new ArrayObject();
-    foreach($this->listPerso as $pers){
+    $trouduc = $this->listPerso;
+    //var_dump($this->listPerso);
+    var_dump($trouduc);
+    foreach($trouduc as $index=>$pers){
+      
       if($pers->get_carteId() == 2 || $pers->get_carteId() == 3 || $pers->get_carteId() == 4){
-      $gentils->append($pers);
+
+        //$gentils->add($pers);
       }
     }
     return $gentils;
