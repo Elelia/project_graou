@@ -16,8 +16,15 @@ switch($action)
         include("view/index.html");
         break;
     }
+	case 'prepareGame':
+	{
+		include("view/preparegame.html");
+		break;
+	}
 	case 'startGame':
 	{
+		$pseudo = $_REQUEST['pseudo'];
+		unPersonnage::changePseudo($pseudo);
 		//on créer une variable user vide qui sera notre joueur
 		$user = '';
 		//on récupère les personnages en base de données
@@ -26,13 +33,15 @@ switch($action)
 		$objectPersonnage = new arrayObject();
 		
 		foreach($lesPersonnages as $personnage) {
-			//var_dump($personnage['name']);
 			$objectPers = new Personnage($personnage['id'],$personnage['carte_id'], $personnage['name_pers'], $personnage['life'], $personnage['status']);
 		 	$objectPersonnage->append($objectPers);
-		 	if($objectPers->get_namePers() == 'UserTest') {
+		 	if($objectPers->get_status() == '1') {
 		 		$user = $objectPers;
 		 	}
 		}
+
+		$blop = unPersonnage::getPersonnageById(3);
+		var_dump($blop);
 		
 		$test=$user->get_carteId();
 		$carte = "carte1.png";

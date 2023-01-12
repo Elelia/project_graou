@@ -10,7 +10,7 @@ class Personnage
     private $status;
     private $vote;
 
-    public function __construct($id,$carte_id,$name_pers,$life,$status)
+    public function __construct($id,$carte_id,$name_pers,$life,$status, $listPerso)
     {
         $this->id=$id;
         $this->carte_id=$carte_id;
@@ -109,9 +109,10 @@ class Personnage
         return $this->vote;
     }
 
-    public function set_vote($vote) {
+    public function set_vote($vote) 
+    {
       $this->vote=$vote;
-  }
+    }
 
     public function vote($vote)
     {
