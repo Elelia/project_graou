@@ -29,7 +29,8 @@ class unPersonnage
 				}
 			}
         }
-        $req = "select p.id, p.carte_id, p.name_pers, p.life, p.status, c.name, c.id as id_carte from personnage p INNER JOIN carte c ON c.id = p.carte_id order by p.id";
+        $req = "select p.id, p.carte_id, p.name_pers, p.life, p.status, c.name, c.id as id_carte 
+        from personnage p INNER JOIN carte c ON c.id = p.carte_id order by p.id";
         $res = Database::get_monPdo()->query($req);
         $res->setFetchMode(PDO::FETCH_OBJ);
         //$res->execute();

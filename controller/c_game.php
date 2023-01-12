@@ -33,7 +33,6 @@ switch($action)
 		 	}
 		}
 
-		var_dump($objectPersonnage);
 		//je test juste en prenant l'id du user
 		$id = $user->get_id();
 
