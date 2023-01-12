@@ -16,6 +16,11 @@ switch($action)
         include("view/index.html");
         break;
     }
+	case 'reglement':
+	{
+		include("view/reglement.html");
+        break;
+	}
 	case 'startGame':
 	{
 		//on créer une variable user vide qui sera notre joueur
