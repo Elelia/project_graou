@@ -33,20 +33,6 @@ class unPersonnage
 		}
     }
 
-    /**
-     * Retourne l'ensemble des personnages
-     *
-     * @return Personnages[] tableau d'objet livre
-     */
-    public static function findAllPersonnage() : array
-    {
-        $texteReq = "select p.id, p.carte_id, p.name_pers, p.life, p.status, c.name, c.id from personnage p INNER JOIN carte c ON c.id = p.carte_id";
-        $req = MonPdo::getInstance()->prepare($texteReq);
-        $req->setFetchMode(PDO::FETCH_OBJ);
-        $req->execute();
-        $les_resultats = $req->fetchAll();
-        return $les_resultats;
-    }
 
 }
 
