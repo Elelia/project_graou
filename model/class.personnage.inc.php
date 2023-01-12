@@ -10,7 +10,7 @@ class Personnage
     private $status;
     private $vote;
 
-    public function __construct($id,$carte_id,$name_pers,$life,$status, $vote)
+    public function __construct($id,$carte_id,$name_pers,$life,$status,$vote)
     {
         $this->id=$id;
         $this->carte_id=$carte_id;
@@ -64,7 +64,6 @@ class Personnage
     public function set_status($status) {
         $this->status=$status;
     }
-
 
     public static function getListPersoAlive($objectPersonnage)
     {
@@ -125,5 +124,5 @@ class Personnage
           $personnage->set_vote($nbVote+1);
         }
       }
-    }  
+    }
 }
