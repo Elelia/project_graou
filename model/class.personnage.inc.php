@@ -1,7 +1,7 @@
 <?php
 
 
-class Personnage
+class Personnage 
 {
     private $id;
     private $carte_id;
@@ -9,8 +9,9 @@ class Personnage
     private $life;
     private $status;
     private $vote;
+    private $partie;
 
-    public function __construct($id,$carte_id,$name_pers,$life,$status, $vote)
+    public function __construct($id,$carte_id,$name_pers,$life,$status, $vote, $partie)
     {
         $this->id=$id;
         $this->carte_id=$carte_id;
@@ -18,6 +19,7 @@ class Personnage
         $this->life=$life;
         $this->status=$status;
         $this->vote=$vote;
+        $this->partie=$partie;
     }
 
     public function get_id()
@@ -43,6 +45,11 @@ class Personnage
     public function get_status()
     {
         return $this->status;
+    }
+
+    public function get_partie()
+    {
+        return $this->partie;
     }
 
     public function set_id($id) {
