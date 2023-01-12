@@ -1,8 +1,13 @@
 <link rel="stylesheet" href="styles/game.css" type="text/css">
 <script type="text/javascript">
     function test() {
-        var test = <?php echo json_encode($carte) ?>;
-        alert(test);
+        var test = <?php echo json_encode($objectPersonnage) ?>;
+        console.log(blop);
+        // for (var i = 0; i < test.length; i++) 
+        // {
+        //    personnages[i] = test[i]["name_pers"];
+        //    console.log(personnages[i]);
+        // }
     }
 </script>
 </head>  

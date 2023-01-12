@@ -22,11 +22,13 @@ switch($action)
 		$user = '';
 		//on récupère les personnages en base de données
 		$lesPersonnages = unPersonnage::getAllPersonnage();
-		//var_dump($lesPersonnages);
-		//on créer un tableau d'objet vide
+
+		//une fonction qui update le carteid des personnages en base au hasard
+		//on la lance et ensuite on créer les personnages
+		
+
 		$objectPersonnage = new arrayObject();
-		//on parcourt les personnages à base et on créer les objets personnage qu'on met dans le tableau d'objet
-		//on met l'objet personnage dans le user si c'est UserTest en name
+		
 		foreach($lesPersonnages as $personnage) {
 			$objectPers = new Personnage($personnage['id'],$personnage['carte_id'], $personnage['name_pers'], $personnage['life'], $personnage['status']);
 			$objectPersonnage->append($objectPers);
@@ -34,36 +36,16 @@ switch($action)
 				$user = $objectPers;
 			}
 		}
-		var_dump($user);
-		//var_dump($objectPersonnage);
-		//on créer le tableau des cartes dispo en base
-		$distribCarte = array(1,1,2,2,2,2,3,3);
-		//on parcourt les personnages
-		//on mélange le tableau à chaque passage de personnage
-		//on parcourt dans le même temps le tableau des cartes
-		//nb permet de ne pas parcourir tout le tableau des cartes sur le même personnage
-		//on attribue l'id de la carte en index au personnage en index et on retire ensuite l'index du tableau de carte et on change nb à 1
-		foreach($objectPersonnage as $indexPers=>$personnage) {
-			shuffle($distribCarte);
-			$nb=0;
-			foreach($distribCarte as $indexCarte=>$carte) {
-				if($nb==0) {
-					$personnage->set_carteId($carte);
-					if($personnage->get_namePers() == 'UserTest') {
-						$user->set_carteId($carte);
-					}
-					unset($distribCarte[$indexCarte]);
-					$nb = 1;
-				}
-			}
-			var_dump($personnage->get_carteId());
-		}
-		var_dump($user);
+		
+		unPersonnage::giveIdCard($objectPersonnage, $user);
+
+
+
 		$test=$user->get_carteId();
 		$carte = "carte1.png";
-		//faudrait que chaque image de carte ait le même id qu'en base comme ça on fait
-		//un foreach dans le html des personnages avec get id carte
-		//et on affiche la bonne carte pour chaque joueur
+		//en fonction de l'id_carte on parcours nos objets et on fait différentes
+		//variable de carte pour afficher les bonnes cartes ensuite
+		//comme on a un nombre défini de joueur c'est facile
 
 		//faire un getnamecartbyid pour récupérer le nom de la carte et l'afficher sur
 		//la page
