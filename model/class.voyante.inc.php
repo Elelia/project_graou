@@ -2,9 +2,9 @@
 
 class Voyante extends Personnage
 {
-    public function __construct($id,$carte_id,$name_pers,$life,$status,$vote)
+    public function __construct($id,$carte_id,$name_pers,$life,$status,$vote, $partie)
     {
-        parent::__construct($id,$carte_id,$name_pers,$life,$status,$vote);
+        parent::__construct($id,$carte_id,$name_pers,$life,$status,$vote, $partie);
     }
 
     public static function chooseCard($idCarteSelec){
@@ -12,6 +12,9 @@ class Voyante extends Personnage
         $res = Database::get_monPdo()->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
-
     }
+
+     public function ActionNuit(){
+      return null;
+     }
 }

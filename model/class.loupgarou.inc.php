@@ -4,9 +4,9 @@
 class Loupgarou extends Personnage
 {
 
-    public function __construct($id,$carte_id,$name_pers,$life,$status)
+    public function __construct($id,$carte_id,$name_pers,$life,$status, $vote,$partie)
     {
-        parent::__construct($id,$carte_id,$name_pers,$life,$status,null);
+        parent::__construct($id,$carte_id,$name_pers,$life,$status,$vote, $partie);
     }
 
     
@@ -15,15 +15,18 @@ class Loupgarou extends Personnage
      * @param $objectPersonnage liste de personnage
      * @param $idPersonneSelect Id du personnage choisis 
      */
-    public function ActionNuit($idPersonneSelect, $objectPersonnage)
+    public function actionNuit()
     {
-      foreach($objectPersonnage as $personnage)
+      if (count(parent::get_partie()->get_chMortNuit()) == 0)
       {
-        if($personnage->get_Id() == $idPersonneSelect)
-        {
-          // set life to 0 when  characters get killed 
-          $personnage->set_life(0);
-        }
+        $tabGentil = parent::get_partie()->getGentils();
+        //var_dump($tabGentil);
+        $PersonneSelect = $tabGentil[rand(0, count($tabGentil))];
+        parent::get_partie()->addMortNuit($PersonneSelect);
+        //var_dump($PersonneSelect);
+        echo '5';
       }
+      //$idPersonneSelect = parent::get_partie()->getIdPersonneSelect();
+      
     }  
 }

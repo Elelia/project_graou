@@ -6,9 +6,9 @@ class Sorciere extends Personnage
     // private $potionPoison = 1;
     // private $nbPotions;
 
-    public function construct($id,$carte_id,$name_pers,$life,$status,$vote)
+    public function construct($id,$carte_id,$name_pers,$life,$status,$vote, $partie)
     {
-        parent::construct($id,$carte_id,$name_pers,$life,$status,$vote);
+        parent::construct($id,$carte_id,$name_pers,$life,$status,$vote, $partie);
         // $this->nbPotions=$nbPotions;
         // $this->potionGuerison=$potionGuerison;
         // $this->potionPoison=$potionPoison;

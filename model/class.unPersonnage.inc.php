@@ -35,6 +35,7 @@ class unPersonnage
         $res->setFetchMode(PDO::FETCH_OBJ);
         //$res->execute();
         $lesLignes = $res->fetchAll();
+        //var_dump($lesLignes);
         return $lesLignes;
     }
 
