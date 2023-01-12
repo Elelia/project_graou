@@ -1,7 +1,7 @@
 <?php
 
 
-class Personnage extends Partie
+class Personnage
 {
     private $id;
     private $carte_id;
