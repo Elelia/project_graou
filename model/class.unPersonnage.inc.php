@@ -12,11 +12,13 @@ class unPersonnage
     public static function giveRandomCardId() {
         $req="select * from personnage";
         $res = Database::get_monPdo()->query($req);
+        $res->setFetchMode(PDO::FETCH_OBJ);
+        //$res->execute();
 		$lesPersonnages = $res->fetchAll();
         $distribCarte = array(1,1,2,2,2,2,3,3);
         foreach($lesPersonnages as $personnage) {
             shuffle($distribCarte);
-            $idPers = $personnage["id"];
+            $idPers = $personnage->id;
 			$nb=0;
 			foreach($distribCarte as $indexCarte=>$carte) {
 				if($nb==0) {
@@ -27,9 +29,12 @@ class unPersonnage
 				}
 			}
         }
-        $req = "select p.id, p.carte_id, p.name_pers, p.life, p.status, c.name, c.id from personnage p INNER JOIN carte c ON c.id = p.carte_id";
+        $req = "select p.id, p.carte_id, p.name_pers, p.life, p.status, c.name, c.id as id_carte from personnage p INNER JOIN carte c ON c.id = p.carte_id order by p.id";
         $res = Database::get_monPdo()->query($req);
+        $res->setFetchMode(PDO::FETCH_OBJ);
+        //$res->execute();
         $lesLignes = $res->fetchAll();
+        var_dump($lesLignes);
         return $lesLignes;
     }
 
@@ -53,26 +58,6 @@ class unPersonnage
         }
         return $resultat;
     }
-
-    // public static function giveIdCard($objectPersonnage, $user) {
-    //     var_dump($objectPersonnage);
-    //     $distribCarte = array(1,1,2,2,2,2,3,3);
-    //     foreach($objectPersonnage as $indexPers=>$personnage) {
-	// 		shuffle($distribCarte);
-	// 		$nb=0;
-	// 		foreach($distribCarte as $indexCarte=>$carte) {
-	// 			if($nb==0) {
-	// 				$personnage->set_carteId($carte);
-	// 				if($personnage->get_namePers() == 'UserTest') {
-	// 					$user->set_carteId($carte);
-	// 				}
-	// 				unset($distribCarte[$indexCarte]);
-	// 				$nb = 1;
-	// 			}
-	// 		}
-	// 		var_dump($personnage->get_carteId());
-	// 	}
-    // }
 
 }
 

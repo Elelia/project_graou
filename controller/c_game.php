@@ -31,17 +31,13 @@ switch($action)
 		$lesPersonnages = unPersonnage::giveRandomCardId();
 
 		$objectPersonnage = new arrayObject();
-		
 		foreach($lesPersonnages as $personnage) {
-			$objectPers = new Personnage($personnage['id'],$personnage['carte_id'], $personnage['name_pers'], $personnage['life'], $personnage['status']);
+			$objectPers = new Personnage($personnage->id,$personnage->carte_id, $personnage->name_pers, $personnage->life, $personnage->status);
 		 	$objectPersonnage->append($objectPers);
 		 	if($objectPers->get_status() == '1') {
 		 		$user = $objectPers;
 		 	}
 		}
-
-		$blop = unPersonnage::getPersonnageById(3);
-		var_dump($blop);
 		
 		$test=$user->get_carteId();
 		$carte = "carte1.png";
