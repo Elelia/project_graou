@@ -8,7 +8,7 @@ if(!isset($_REQUEST['action']))
 	$_REQUEST['action'] = 'home';
 }
 $action = $_REQUEST['action'];
-var_dump($action);
+
 switch($action)
 {
     case 'home':
@@ -60,7 +60,7 @@ switch($action)
 		}
 		var_dump($user);
 		$test=$user->get_carteId();
-		$carte = "image3.PNG";
+		$carte = "carte1.png";
 		//faudrait que chaque image de carte ait le même id qu'en base comme ça on fait
 		//un foreach dans le html des personnages avec get id carte
 		//et on affiche la bonne carte pour chaque joueur
@@ -68,6 +68,9 @@ switch($action)
 		//faire un getnamecartbyid pour récupérer le nom de la carte et l'afficher sur
 		//la page
 
+		//faudra jouer sur les switch case pour gérer les actions jours/nuit i think
+
+		//on stock les personnages dans la variable SESSION je pense
 		include("view/game.php");
 		break;
 	}
