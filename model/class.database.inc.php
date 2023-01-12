@@ -7,7 +7,7 @@ class Database
     private static $user='root';    		
     private static $mdp='';		
 	private static $monPdo;
-    private static $monPdoGsb=null;
+    private static $monPdoGarou=null;
 
     private function __construct()
     {
@@ -21,11 +21,11 @@ class Database
 	}
 
     public static function getDatabase(){
-		if(Database::$monPdoGsb==null)
+		if(Database::$monPdoGarou==null)
 		{
-			Database::$monPdoGsb= new Database();
+			Database::$monPdoGarou= new Database();
 		}
-		return Database::$monPdoGsb;  
+		return Database::$monPdoGarou;  
 	}
 
 	public static function get_monPdo()

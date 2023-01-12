@@ -8,16 +8,15 @@ class Personnage
     private $name_pers;
     private $life;
     private $status;
-    public $listPerso;
+    private $vote;
 
-    public function __construct($id,$carte_id,$name_pers,$life,$status, $listPerso)
+    public function __construct($id,$carte_id,$name_pers,$life,$status)
     {
         $this->id=$id;
         $this->carte_id=$carte_id;
         $this->name_pers=$name_pers;
         $this->life=$life;
         $this->status=$status;
-        $this->listPerso=$listPerso;
     }
 
     public function get_id()
@@ -65,6 +64,11 @@ class Personnage
         $this->status=$status;
     }
 
+
+
+
+
+    //liste des perso + mort et vivant
     public function getListPerso($objectPersonnage)
     {
       $listPerso = $objectPersonnage;
@@ -97,4 +101,20 @@ class Personnage
       return $persMort;
     }
     
+
+
+    //fonction vote
+    public function get_vote()
+    {
+        return $this->vote;
+    }
+
+    public function set_vote($vote) {
+      $this->vote=$vote;
+  }
+
+    public function vote($vote)
+    {
+      $vote += 1;
+    }  
 }
