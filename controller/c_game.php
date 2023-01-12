@@ -33,16 +33,27 @@ switch($action)
 		$objectPersonnage = new arrayObject();
 		
 		foreach($lesPersonnages as $personnage) {
-			$objectPers = new Personnage($personnage['id'],$personnage['carte_id'], $personnage['name_pers'], $personnage['life'], $personnage['status']);
+			$objectPers = new Personnage($personnage['id'],$personnage['carte_id'], $personnage['name_pers'], $personnage['life'], $personnage['status'], 0);
 		 	$objectPersonnage->append($objectPers);
 		 	if($objectPers->get_status() == '1') {
 		 		$user = $objectPers;
 		 	}
 		}
-
+    
+    // Personnage::vote(1, $objectPersonnage); 
+		// var_dump($objectPersonnage);
+/*
 		$blop = unPersonnage::getPersonnageById(3);
 		var_dump($blop);
-		
+*/
+
+    // $listPers = Personnage::getListPersoAlive($objectPersonnage);
+		// var_dump($listPers);
+
+    // $listPers = Personnage::getListPersoDead($objectPersonnage);
+		// var_dump($listPers);
+
+
 		$test=$user->get_carteId();
 		$carte = "carte1.png";
 		include("view/game.php");

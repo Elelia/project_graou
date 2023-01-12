@@ -10,13 +10,14 @@ class Personnage
     private $status;
     private $vote;
 
-    public function __construct($id,$carte_id,$name_pers,$life,$status, $listPerso)
+    public function __construct($id,$carte_id,$name_pers,$life,$status, $vote)
     {
         $this->id=$id;
         $this->carte_id=$carte_id;
         $this->name_pers=$name_pers;
         $this->life=$life;
         $this->status=$status;
+        $this->vote=$vote;
     }
 
     public function get_id()
@@ -65,18 +66,9 @@ class Personnage
     }
 
 
-
-
-
-    //liste des perso + mort et vivant
-    public function getListPerso($objectPersonnage)
+    public static function getListPersoAlive($objectPersonnage)
     {
       $listPerso = $objectPersonnage;
-      return $listPerso;
-    }
-
-    public function getListPersoAlive($listPerso)
-    {
       $persVivant = new ArrayObject();
       foreach($listPerso as $pers)
       {
@@ -88,8 +80,9 @@ class Personnage
       return $persVivant;
     }
 
-    public function getListPersoDead($listPerso)
+    public static function getListPersoDead($objectPersonnage)
     {
+      $listPerso = $objectPersonnage;
       $persMort = new ArrayObject();
       foreach($listPerso as $pers)
       {
@@ -114,8 +107,23 @@ class Personnage
       $this->vote=$vote;
     }
 
-    public function vote($vote)
+    public function resetVote($objectPersonnage)
     {
-      $vote += 1;
+      foreach($objectPersonnage as $perso)
+      {
+        $perso->set_vote(0);
+      }
+    }
+
+    public static function vote($idPersonneSelect, $objectPersonnage)
+    {
+      foreach($objectPersonnage as $personnage)
+      {
+        if($personnage->get_Id() == $idPersonneSelect)
+        {
+          $nbVote = $personnage->get_vote();
+          $personnage->set_vote($nbVote+1);
+        }
+      }
     }  
 }
