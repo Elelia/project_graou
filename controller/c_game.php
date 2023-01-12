@@ -38,7 +38,21 @@ switch($action)
 		 		$user = $objectPers;
 		 	}
 		}
-		
+    
+    // Personnage::vote(1, $objectPersonnage); 
+		// var_dump($objectPersonnage);
+/*
+		$blop = unPersonnage::getPersonnageById(3);
+		var_dump($blop);
+*/
+
+    // $listPers = Personnage::getListPersoAlive($objectPersonnage);
+		// var_dump($listPers);
+
+    // $listPers = Personnage::getListPersoDead($objectPersonnage);
+		// var_dump($listPers);
+
+
 		$test=$user->get_carteId();
 		$carte = "carte1.png";
 		include("view/game.php");

@@ -35,9 +35,5 @@ class Partie
         return $this->listperso;
     }
 
-    public function getListPerso($objectPersonnage)
-    {
-      $listPerso = $objectPersonnage;
-      return $listPerso;
-    }
+    
 }
