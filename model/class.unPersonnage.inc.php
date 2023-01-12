@@ -12,8 +12,6 @@ class unPersonnage
     public static function giveRandomCardId() {
         $req="select * from personnage";
         $res = Database::get_monPdo()->query($req);
-        //$res->setFetchMode(PDO::FETCH_OBJ);
-        //$res->execute();
 		$lesPersonnages = $res->fetchAll();
         $distribCarte = array(1,1,2,2,2,2,3,3);
         foreach($lesPersonnages as $personnage) {
@@ -21,7 +19,6 @@ class unPersonnage
             $idPers = $personnage["id"];
 			$nb=0;
 			foreach($distribCarte as $indexCarte=>$carte) {
-                var_dump($carte);
 				if($nb==0) {
 					$req="update personnage set carte_id = '$carte' where id = '$idPers'";
                     Database::get_monPdo()->exec($req);
@@ -39,6 +36,22 @@ class unPersonnage
     public static function changePseudo($pseudo) {
         $req="update personnage set name_pers = '$pseudo' where status = '1'";
         Database::get_monPdo()->exec($req);
+    }
+
+    public static function getPersonnageById($id) {
+        try {
+            $cnx = Database::get_monPdo();
+            $req = $cnx->prepare("select * from personnage where id like :id");
+            $req->bindValue(':id', $id, PDO::PARAM_STR);
+
+            $req->execute();
+
+            $resultat = $req->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
     }
 
     // public static function giveIdCard($objectPersonnage, $user) {

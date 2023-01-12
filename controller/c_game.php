@@ -39,6 +39,9 @@ switch($action)
 		 		$user = $objectPers;
 		 	}
 		}
+
+		$blop = unPersonnage::getPersonnageById(3);
+		var_dump($blop);
 		
 		$test=$user->get_carteId();
 		$carte = "carte1.png";
