@@ -1,6 +1,10 @@
 <?php
 require_once("model/class.database.inc.php");
 require_once("model/class.personnage.inc.php");
+require_once("model/class.loupgarou.inc.php");
+require_once("model/class.villageois.inc.php");
+require_once("model/class.sorciere.inc.php");
+require_once("model/class.voyante.inc.php");
 require_once("model/class.unPersonnage.inc.php");
 
 $action = $_REQUEST['action'];
@@ -21,14 +25,15 @@ switch($action)
 
 		$objectPersonnage = new arrayObject();
 		foreach($lesPersonnages as $personnage) {
-			$bip = $personnage->name;
-			var_dump($bip);
-			$objectPers = new Personnage($personnage->id,$personnage->carte_id, $personnage->name_pers, $personnage->life, $personnage->status, 0);
+			$classe = $personnage->name;
+			$objectPers = new $classe($personnage->id,$personnage->carte_id, $personnage->name_pers, $personnage->life, $personnage->status, 0);
 		 	$objectPersonnage->append($objectPers);
 		 	if($objectPers->get_status() == '1') {
 		 		$user = $objectPers;
 		 	}
 		}
+
+		var_dump($objectPersonnage);
 		//je test juste en prenant l'id du user
 		$id = $user->get_id();
 

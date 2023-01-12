@@ -2,9 +2,9 @@
 
 class Voyante extends Personnage
 {
-    public function __construct($id,$carte_id,$name_pers,$life,$status)
+    public function __construct($id,$carte_id,$name_pers,$life,$status,$vote)
     {
-        parent::__construct($id,$carte_id,$name_pers,$life,$status);
+        parent::__construct($id,$carte_id,$name_pers,$life,$status,$vote);
     }
 
     public static function chooseCard($idCarteSelec){
