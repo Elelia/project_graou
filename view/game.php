@@ -3,11 +3,11 @@
     function test() {
         var test = <?php echo json_encode($objectPersonnage) ?>;
         console.log(blop);
-        // for (var i = 0; i < test.length; i++) 
-        // {
-        //    personnages[i] = test[i]["name_pers"];
-        //    console.log(personnages[i]);
-        // }
+        for (var i = 0; i < test.length; i++) 
+        {
+            personnages[i] = test[i]["name_pers"];
+            console.log(personnages[i]);
+        }
     }
 </script>
 </head>  
