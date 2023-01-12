@@ -1,0 +1,90 @@
+@font-face {
+	font-family: "Another_Danger";
+	src: url("fonts/Another_Danger.otf") format("opentype")
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: url("../images/village_flou_cercle.jpg");   /* lien background : https://zupimages.net/up/23/02/dbar.jpg */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: #525252;
+    overflow:hidden;  
+}
+
+.logo-home{
+    margin-top: 20em;
+    justify-content: center;
+    align-self: center;
+    display: flex;
+    place-items: center;
+    position: fixed;
+    left: 50%;
+    top: 10px;
+    transform: translate(-50%, -50%);
+}
+
+.bouton-home{
+    margin-top: 4em;
+    justify-content: center;
+    align-self: center;
+    display: flex;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 900px) {
+    .logo-home{
+        display: grid;
+        top: -10%;        
+    }
+
+    .bouton-home{
+        display: grid;
+        top: 65%;
+    }
+}
+
+.bouton{
+    background-color: rgba(219, 196, 118, 0.493);
+    width: 250px;
+    height: 60px;
+    border: 4px solid black;
+    font-family: "Another_Danger", fantasy;
+    font-size: 20px;
+    font-weight: bold;
+    color: #c51e1e;
+    transition: .3s linear;
+    position: relative;
+    cursor: pointer;
+    margin: 50px;
+}
+ .bouton:hover{
+    color: white;
+ }
+
+ .bouton::before{
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 55px;
+    top: 0px;
+    left: 0px;
+    background-color: #a11919;
+    z-index: -1;
+    transition: .3s linear;
+   
+ }
+
+ .bouton:hover::before{
+    width: 245px;
+ }
