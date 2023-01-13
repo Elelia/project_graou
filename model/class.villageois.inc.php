@@ -2,14 +2,29 @@
 
 class Villageois extends Personnage
 {
- 
-    public function __construct($id,$carte_id,$name_pers,$life,$status, $vote, $partie)
-    {
-        parent::__construct($id,$carte_id,$name_pers,$life,$status, $vote, $partie);
-    }
+  private $role;
+  public function __construct($id, $carte_id, $name_pers, $life, $status, $vote, $partie)
+  {
+    parent::__construct($id, $carte_id, $name_pers, $life, $status, $vote, $partie, 20);
+    $this->role = 'village';
+  }
 
-       // un villageois n'a pas d'action de nuit 
-    public function actionNuit(){
-        return null;
+  public function getRole()
+  {
+    return $this->role;
+  }
+  // un villageois n'a pas d'action de nuit 
+  public function actionNuit()
+  {
+    return null;
+  }
+
+  //méthode qui permet au villageois de voter pour un autre joueur
+  public function actionJour()
+  {
+    $randomPers = $this->getRandomPers($this);
+    if ($randomPers != null) {
+      $randomPers->addVote();
     }
+  }
 }

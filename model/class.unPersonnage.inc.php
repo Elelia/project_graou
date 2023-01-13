@@ -9,13 +9,14 @@ class unPersonnage
 		return $lesLignes; 
     }
 
+    //méthode qui donne des carte_id aléatoire à tous les personnages de la base
     public static function giveRandomCardId() {
         $req="select * from personnage";
         $res = Database::get_monPdo()->query($req);
         $res->setFetchMode(PDO::FETCH_OBJ);
         //$res->execute();
 		$lesPersonnages = $res->fetchAll();
-        $distribCarte = array(1,1,2,2,2,2,3,3);
+        $distribCarte = array(1,1,2,2,2,3,4);
         foreach($lesPersonnages as $personnage) {
             shuffle($distribCarte);
             $idPers = $personnage->id;
@@ -29,13 +30,11 @@ class unPersonnage
 				}
 			}
         }
-        $req = "select p.id, p.carte_id, p.name_pers, p.life, p.status, c.name, c.id as id_carte 
-        from personnage p INNER JOIN carte c ON c.id = p.carte_id order by p.id";
+        $req = "select p.id, p.carte_id, p.name_pers, p.life, p.status, c.name, c.id as id_carte from personnage p INNER JOIN carte c ON c.id = p.carte_id order by p.id";
         $res = Database::get_monPdo()->query($req);
         $res->setFetchMode(PDO::FETCH_OBJ);
         //$res->execute();
         $lesLignes = $res->fetchAll();
-        //var_dump($lesLignes);
         return $lesLignes;
     }
 
@@ -62,5 +61,3 @@ class unPersonnage
 
 
 }
-
-?>

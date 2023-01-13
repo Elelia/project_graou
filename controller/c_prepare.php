@@ -21,6 +21,10 @@ switch($action)
 		include("view/preparegame.html");
 		break;
 	}
-}
 
-?>
+	case 'reglement':
+	{
+		include("view/reglement.html");
+        break;
+	}
+}

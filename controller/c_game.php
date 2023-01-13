@@ -14,32 +14,31 @@ switch($action)
 {
 	case 'startGame':
 	{
-		//la partie commence
-		//on attribue les cartes aux joueurs
-		//il faut lancer la nuit
+		//on récupère le pseudo saisit par l'utilisateur et on le modifie en base
 		$pseudo = $_REQUEST['pseudo'];
 		unPersonnage::changePseudo($pseudo);
 		//on créer une variable user vide qui sera notre joueur
 		$user = '';
-		//on récupère les personnages en base de données
+		//on récupère les personnages en base de données et on leur donne des id_carte aléatoire
 		$lesPersonnages = unPersonnage::giveRandomCardId();
-    $laMereDeRaphael = new Partie();
+    	//on instancie notre partie
+		$partie = new Partie();
 
-		$objectPersonnage = new arrayObject();
+		//on créer les différents personnages
 		foreach($lesPersonnages as $personnage) {
 			$classe = $personnage->name;
-			$objectPers = new $classe($personnage->id,$personnage->carte_id, $personnage->name_pers, $personnage->life, $personnage->status, 0, $laMereDeRaphael);
-		 	$objectPersonnage->append($objectPers);
+			$objectPers = new $classe($personnage->id,$personnage->carte_id, $personnage->name_pers, $personnage->life, $personnage->status, 0, $partie);
+		 	$partie->addPersonnage($objectPers);
 		 	if($objectPers->get_status() == '1') {
 		 		$user = $objectPers;
 		 	}
 		}
-    $laMereDeRaphael->set_lesPersos($objectPersonnage);
-    // var_dump($laMereDeRaphael);
+   
+		//on lance la partie
+    	$partie->startGame();
 
-		//je test juste en prenant l'id du user
+		//test pour changer la carte en fonction d'un id_carte du joueur
 		$id = $user->get_id();
-
 		$test=$user->get_carteId();
 		$carte = "carte1.png";
 
@@ -53,6 +52,3 @@ switch($action)
 }
 
 include("view/game.php");
-
-
-?>
