@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
+:root {}
+
+/*body {
+	background: url(https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://www.creadisiac.com/wp-content/uploads/2015/11/low_poly_background.jpg) center center / cover no-repeat ;
+}*/
+body {
+  background: #ddd2c5;
+}
+
+.presentation {
+  padding: 30px 5%;
+  margin-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.image- {
+  text-align: center;
+}
+
+.card-body {
+  background: #ddd2c5;
+}
+
+/* .presentation .product-presentation h1 {
+	margin: 0;
+	font-size: 4vw;
+	width: 80%;
+                          color: black;
+	text-align: center;
+	
+} /*
+
+/*.presentation .product-presentation p {
+	font-weight: 800;
+	
+	color: black;
+}*/
+.product-presentation h1 {
+  color: #000000;
+  font-family: 'Raleway', sans-serif;
+  font-size: 62px;
+  font-weight: 800;
+  line-height: 72px;
+  margin: 0 0 24px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.product-presentation p {
+  color: #000000;
+  font-family: 'Raleway', sans-serif;
+  font-size: 26px;
+  font-weight: 28;
+  line-height: 32px;
+  margin: 0 0 30px;
+}

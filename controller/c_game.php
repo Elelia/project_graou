@@ -67,6 +67,3 @@ switch($action)
 }
 
 include("view/game.php");
-
-
-?>

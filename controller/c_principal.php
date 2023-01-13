@@ -12,4 +12,3 @@ function controleurPrincipal($uc) {
         return $lesActions["defaut"];
     }
 }
-?>
