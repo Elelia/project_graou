@@ -8,8 +8,9 @@ class Personnage
     private $status;
     private $vote;
     private $partie;
+    private $priorite;
 
-    public function __construct($id,$carte_id,$name_pers,$life,$status, $vote, $partie)
+    public function __construct($id,$carte_id,$name_pers,$life,$status, $vote, $partie, $priorite)
     {
         $this->id=$id;
         $this->carte_id=$carte_id;
@@ -18,6 +19,7 @@ class Personnage
         $this->status=$status;
         $this->vote=$vote;
         $this->partie=$partie;
+        $this->priorite=$priorite;
     }
 
     public function get_id()
@@ -43,6 +45,11 @@ class Personnage
     public function get_status()
     {
         return $this->status;
+    }
+
+    public function getPriorite()
+    {
+        return $this->priorite;
     }
 
     public function get_partie()
@@ -106,20 +113,17 @@ class Personnage
         return $this->vote;
     }
 
-    public function set_vote($vote) 
+    public function addVote() 
     {
-      $this->vote=$vote;
+      $this->vote += 1;
     }
 
-    public function resetVote($objectPersonnage)
+    public function resetVote()
     {
-      foreach($objectPersonnage as $perso)
-      {
-        $perso->set_vote(0);
-      }
+      $this->vote = 0;
     }
 
-    public static function vote($idPersonneSelect, $objectPersonnage)
+    public function vote($idPersonneSelect, $objectPersonnage)
     {
       foreach($objectPersonnage as $personnage)
       {
@@ -130,4 +134,27 @@ class Personnage
         }
       }
     }
+
+    public function getRandomPers($me){
+      $notMe = new ArrayObject();
+      $listPerso = $this->partie->getJoueurEnVie();
+      //unset($listPerso[$me]);
+      foreach($listPerso as $perso)
+      {
+        if($perso != $me)
+        {
+          $notMe->append($perso);
+        }
+      }
+      if(count($listPerso) > 1)
+      {
+        return $notMe[rand(0, count($notMe)-1)];
+      }
+      else{
+        return null;
+      }
+      
+    }
+
+    
 }

@@ -23,21 +23,20 @@ switch($action)
 		$user = '';
 		//on récupère les personnages en base de données
 		$lesPersonnages = unPersonnage::giveRandomCardId();
-    $laMereDeRaphael = new Partie();
+    $partie = new Partie();
 
-		$objectPersonnage = new arrayObject();
+		//$objectPersonnage = new array();
 		foreach($lesPersonnages as $personnage) {
 			$classe = $personnage->name;
-			$objectPers = new $classe($personnage->id,$personnage->carte_id, $personnage->name_pers, $personnage->life, $personnage->status, 0, $laMereDeRaphael);
-		 	$objectPersonnage->append($objectPers);
+			$objectPers = new $classe($personnage->id,$personnage->carte_id, $personnage->name_pers, $personnage->life, $personnage->status, 0, $partie);
+      //var_dump($objectPers);
+		 	$partie->addPersonnage($objectPers);
 		 	if($objectPers->get_status() == '1') {
 		 		$user = $objectPers;
 		 	}
 		}
-    $laMereDeRaphael->set_lesPersos($objectPersonnage);
-    // var_dump($laMereDeRaphael);
-
-    $laMereDeRaphael->startGame();
+   
+    $partie->startGame();
     //Personnage::vote(1, $objectPersonnage); 
 		//var_dump($objectPersonnage);
 

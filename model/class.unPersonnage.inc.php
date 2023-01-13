@@ -15,7 +15,7 @@ class unPersonnage
         $res->setFetchMode(PDO::FETCH_OBJ);
         //$res->execute();
 		$lesPersonnages = $res->fetchAll();
-        $distribCarte = array(1,1,2,2,2,2,3,3);
+        $distribCarte = array(1,1,2,2,2,3,4);
         foreach($lesPersonnages as $personnage) {
             shuffle($distribCarte);
             $idPers = $personnage->id;
